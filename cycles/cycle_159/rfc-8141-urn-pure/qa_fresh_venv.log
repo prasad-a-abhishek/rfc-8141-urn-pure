@@ -1,0 +1,34 @@
+=== qa159 fresh-venv smoke (started 2026-10-01T15:57:21+00:00) ===
+$ python3 -m venv qa159_fresh_venv
+$ pip install --quiet --no-input /root/projects/rfc-8141-urn-pure
+(install succeeded, exit 0)
+
+$ urn --version
+urn 0.1.0 (rfc8141-urn-pure)
+
+$ urn validate 'urn:ietf:rfc:8141'
+valid
+EXIT=0
+
+$ urn parse 'urn:isbn:0451450523'
+{
+  "nid": "isbn",
+  "nss": "0451450523",
+  "nss_decoded": "0451450523",
+  "rqn": "isbn:0451450523",
+  "original": "urn:isbn:0451450523"
+}
+
+$ urn construct isbn 0451450523
+urn:isbn:0451450523
+
+$ urn resolve-ni 'urn:ni:?n=MjOFdgw1zZx6EUiZJWhc&alg=sha256'
+323385760c35cd9c7a11489925685c
+
+$ urn resolve-tag 'urn:tag:example.com,2024-10-01:blog/entry'
+2024-10-01 example.com blog/entry
+
+$ pytest --collect-only -q | tail -1   # from project dir (pytest is not a runtime dep)
+203 tests collected in 0.06s
+
+=== smoke completed 2026-10-01T15:57:21+00:00 ===
