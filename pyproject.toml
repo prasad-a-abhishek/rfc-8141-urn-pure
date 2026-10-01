@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rfc8141-urn-pure"
+version = "0.1.0"
+description = "Zero-dependency RFC 8141 URN parser, validator, and resolver"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Prasad A. Abhishek", email = "prasad@prasadaabhishek.name"}
+]
+keywords = ["urn", "rfc8141", "uri", "parser", "resolver", "ni", "tag"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: URI and URL (URN)",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+urn = "rfc8141_urn_pure.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
