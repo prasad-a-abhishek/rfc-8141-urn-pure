@@ -1,0 +1,76 @@
+{
+  "total_surfaces": 5,
+  "total_iterations": 250000,
+  "total_wall_time_seconds": 27,
+  "per_surface": {
+    "core_api": {
+      "iterations": 50000,
+      "wall_time_seconds": 0,
+      "crashes": 0,
+      "hangs": 0,
+      "oom": 0,
+      "coverage_pct": 0.0,
+      "final_cov_units": null,
+      "seed_count": 9,
+      "final_corpus": null,
+      "new_inputs_added": 0,
+      "log_path": "/root/projects/rfc-8141-urn-pure/.worktrees/t_cycle159-adversary/cycle_159/adversary/fuzz/logs/core_api.log"
+    },
+    "validation_api": {
+      "iterations": 50000,
+      "wall_time_seconds": 0,
+      "crashes": 0,
+      "hangs": 0,
+      "oom": 0,
+      "coverage_pct": 0.0,
+      "final_cov_units": null,
+      "seed_count": 10,
+      "final_corpus": null,
+      "new_inputs_added": 0,
+      "log_path": "/root/projects/rfc-8141-urn-pure/.worktrees/t_cycle159-adversary/cycle_159/adversary/fuzz/logs/validation_api.log"
+    },
+    "resolver_api": {
+      "iterations": 50000,
+      "wall_time_seconds": 0,
+      "crashes": 0,
+      "hangs": 0,
+      "oom": 0,
+      "coverage_pct": 0.0,
+      "final_cov_units": null,
+      "seed_count": 8,
+      "final_corpus": null,
+      "new_inputs_added": 0,
+      "log_path": "/root/projects/rfc-8141-urn-pure/.worktrees/t_cycle159-adversary/cycle_159/adversary/fuzz/logs/resolver_api.log"
+    },
+    "cli": {
+      "iterations": 50000,
+      "wall_time_seconds": 27,
+      "crashes": 0,
+      "hangs": 0,
+      "oom": 0,
+      "coverage_pct": 100.0,
+      "final_cov_units": 380,
+      "seed_count": 9,
+      "final_corpus": 27,
+      "new_inputs_added": 18,
+      "log_path": "/root/projects/rfc-8141-urn-pure/.worktrees/t_cycle159-adversary/cycle_159/adversary/fuzz/logs/cli.log"
+    },
+    "invariant21": {
+      "iterations": 50000,
+      "wall_time_seconds": 1,
+      "crashes": 0,
+      "hangs": 0,
+      "oom": 0,
+      "coverage_pct": 25.3,
+      "final_cov_units": 96,
+      "seed_count": 10,
+      "final_corpus": 25,
+      "new_inputs_added": 15,
+      "log_path": "/root/projects/rfc-8141-urn-pure/.worktrees/t_cycle159-adversary/cycle_159/adversary/fuzz/logs/invariant21.log"
+    }
+  },
+  "atheris_version": "3.0.0",
+  "asan_ubsan": "unavailable (libFuzzer only; ASan/UBSan symbols missing per T2 metadata)",
+  "verdict_recommendation": "CLEAN",
+  "notes": "All 5 surfaces reached 50000 iterations with 0 crashes. core_api/validation_api/resolver_api harnesses emit 'no interesting inputs' because FuzzedDataProvider consumes most seed bytes as UTF-32 mode (first byte high-bit-set); libFuzzer still mutates but coverage plateaus. cli and invariant21 found coverage growth. ASan/UBSan not available in this container (T2 metadata confirms)."
+}

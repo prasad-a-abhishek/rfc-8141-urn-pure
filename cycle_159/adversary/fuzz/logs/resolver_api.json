@@ -1,0 +1,17 @@
+{
+  "surface": "resolver_api",
+  "raw_log": "INFO: Instrumenting rfc8141_urn_pure\nINFO: Instrumenting rfc8141_urn_pure._errors\nINFO: Instrumenting rfc8141_urn_pure._parser\nINFO: Instrumenting rfc8141_urn_pure._nid\nINFO: Instrumenting rfc8141_urn_pure._nss\nINFO: Instrumenting rfc8141_urn_pure._construct\nINFO: Instrumenting rfc8141_urn_pure._resolver\nINFO: Using built-in libfuzzer\nWARNING: Failed to find function \"__sanitizer_acquire_crash_state\".\nWARNING: Failed to find function \"__sanitizer_print_stack_trace\".\nWARNING: Failed to find function \"__sanitizer_set_death_callback\".\nINFO: Running with entropic power schedule (0xFF, 100).\nINFO: Seed: 4290966300\nINFO:        8 files found in cycle_159/adversary/fuzz/corpus/resolver_api\nINFO:        0 files found in cycle_159/adversary/fuzz/crashes/resolver_api\nINFO: seed corpus: files: 8 min: 11b max: 37b total: 161b rss: 41Mb\n#9\tINITED exec/s: 0 rss: 41Mb\nWARNING: no interesting inputs were found so far. Is the code instrumented for coverage?\nThis may also happen if the target rejected all inputs we tried so far\nDone 50000 in 0 second(s)\n",
+  "seed": 4290966300,
+  "seed_corpus": {
+    "files": 8,
+    "min_b": 11,
+    "max_b": 37,
+    "total_b": 161
+  },
+  "summary": {
+    "iterations": 50000,
+    "wall_time_seconds": 0
+  },
+  "crashes": 0,
+  "exit_status": "clean"
+}
