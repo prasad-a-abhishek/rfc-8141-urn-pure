@@ -191,3 +191,4 @@ The build is genuinely shippable. The three pillars hold:
 - **Honest**: README matches on-disk reality; BENCHMARK.md matches re-run output (0% drift); test count claims match; Limitations/Non-Goals present; secret scan CLEAN.
 
 The one Medium finding (F-001 spec/implementation drift) and one Low finding (F-002 percent_encode export) are documentation/contract cleanup tasks that can be addressed in a subsequent `cycle_159/fix2` or deferred to the next iteration; neither blocks shipping because the actual artifact on disk is internally consistent, fully tested, and honestly described in the README.
+VERDICT: SHIP
