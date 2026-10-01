@@ -31,16 +31,22 @@ resolve_tag("urn:tag:example.com,2024-10-01:blog/entry")
 # '2024-10-01 example.com blog/entry'
 ```
 
-## ⚡ Performance
+## ⚡ Performance & Benchmarks
 
-| Operation | rfc8141-urn-pure | uritools | pyrfc5146 |
-|-----------|-----------------|----------|-----------|
-| parse (basic) | 1.0x | 2.3x slower | 1.8x slower |
-| parse (percent-encoded) | 1.0x | 2.1x slower | 1.9x slower |
-| validate | 1.0x | 2.5x slower | 1.7x slower |
-| construct | 1.0x | 1.4x slower | 1.6x slower |
+Benchmarks vs Python stdlib (`urllib.parse` + regex). Our implementation does full RFC 8141 structural validation (NID/NSS rules, percent-decode, reserved chars) while stdlib treats `urn:` as opaque. The speed difference reflects this — stdlib is a naive regex with no validation; our impl is RFC-compliant.
 
-Pure Python, no C extensions. Run locally: `python3 benchmarks/run_benchmark.py`
+Run locally: `python3 benchmarks/run_benchmark.py`
+
+| Workload | rfc8141-urn-pure (s/call) | stdlib (s/call) | Note |
+|----------|---------------------------|-----------------|------|
+| parse_basic | 0.000002 | 0.000000 | stdlib is naive regex; ours validates NID/NSS structure |
+| parse_percent_encoded | 0.000002 | 0.000000 | same — stdlib skips all validation |
+| validate_basic | 0.000001 | 0.000001 | similar speed, stdlib misses NID length limits |
+| validate_complex | 0.000002 | 0.000001 | ours checks RFC 8141 Section 3 rules |
+| construct | 0.000001 | 0.000000 | stdlib is plain f-string |
+| resolve_ni | 0.000005 | 0.000004 | ours decodes ni: hash; stdlib just parses |
+
+Pure Python, no C extensions. Speed is not the goal — RFC compliance and zero-dependency are.
 
 ## Why rfc8141-urn-pure?
 
